@@ -3,6 +3,7 @@ package com.hospitalManagement.HospitalManagement.service;
 import com.hospitalManagement.HospitalManagement.entity.*;
 import com.hospitalManagement.HospitalManagement.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +24,10 @@ public class HospitalService {
     private NeuroInternsRepository neuroInternsRepository;
     @Autowired
     private NeurologySpecialistRepository neurologySpecialistRepository;
+    @Autowired
+    private DoctorsInfoRepository repository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 //Get details as List
     public List<Admin> getAllAdmins() {
@@ -235,5 +240,12 @@ public class HospitalService {
         nephroInternsRepository.deleteById(id);
         return "deleted successfully"+id;
     }
+
+    public String addDoctorInfo(DoctorsInfo doctorsInfo){
+       doctorsInfo. setPassword(passwordEncoder.encode(doctorsInfo.getPassword()));
+        repository.save(doctorsInfo);
+        return "user added to database";
+    }
+
 
 }

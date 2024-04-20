@@ -118,83 +118,85 @@ public class HospitalController {
     }
 
     @GetMapping("/display/AllHeadsOfCardio")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN','ROLE_CARDIOHEAD')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_CARDIOHEAD')")
 
     public List<CardiologySpecialist> findAllCardioHeads() {
         return service.getAllCardioHeads();
     }
 
     @GetMapping("/display/AllInternsOfCardio")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_CARDIOHEAD')")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_CARDIOHEAD')or hasAuthority('ROLE_CARDIOINTERN')")
     public List<CardioInterns> findAllCardioInterns() {
         return service.getAllCardioInterns();
     }
 
-    @GetMapping("/displayAllHeadsOfNeuro")
-    @PreAuthorize("hasRole('admin','neurohead')")
+    @GetMapping("/display/AllHeadsOfNeuro")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_NEUROHEAD')")
+
     public List<NeurologySpecialist> findAllNeuroHeads() {
         return service.getAllNeuroHeads();
     }
 
-    @GetMapping("/displayAllInternsOfNeuro")
-    @PreAuthorize("hasRole('admin','neurohead','neurointern')")
+    @GetMapping("/display/AllInternsOfNeuro")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_NEUROHEAD')or hasAuthority('ROLE_NEUROINTERN')")
     public List<NeuroInterns> findAllNeuroInterns() {
         return service.getAllNeuroInterns();
     }
 
-    @GetMapping("/displayAllHeadsOfNephro")
-    @PreAuthorize("hasRole('admin','nephrohead')")
+    @GetMapping("/display/AllHeadsOfNephro")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_NEPHROHEAD')")
+
     public List<NephrologySpecialist> findAllNephroHeads() {
         return service.getAllNephroHeads();
     }
 
-    @GetMapping("/displayAllInternsOfNephro")
-    @PreAuthorize("hasRole('admin','nephrohead','nephrointern')")
+    @GetMapping("/display/AllInternsOfNephro")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_NEPHROHEAD')or hasAuthority('ROLE_NEPHROINTERN')")
     public List<NephroInterns> findAllNephroInterns() {
         return service.getAllNephroInterns();
     }
 
     //GET DETAILS BY ID
-    @GetMapping("/displayAdminById/{id}")
+    @GetMapping("/display/AdminById/{id}")
     @PreAuthorize("hasRole('admin')")
     public Admin findAdminById(@PathVariable int id) {
         return service.getAdminDetailById(id);
     }
 
-    @GetMapping("/displayHeadOfCardioById/{id}")
+    @GetMapping("/display/HeadOfCardioById/{id}")
     @PreAuthorize("hasRole('admin','cardiohead')")
     public CardiologySpecialist findCardioHeadById(@PathVariable int id) {
         return service.getCardioHeadById(id);
     }
 
-    @GetMapping("/displayInternOfCardioByid/{id}")
+    @GetMapping("/display/InternOfCardioByid/{id}")
     @PreAuthorize("hasRole('admin','cardiohead','cardiointern')")
     public CardioInterns findCardioInternById(@PathVariable int id) {
         return service.getCardioInternById(id);
     }
 
-    @GetMapping("/displayHeadOfNeuroById/{id}")
+    @GetMapping("/display/HeadOfNeuroById/{id}")
     @PreAuthorize("hasRole('admin','neurohead')")
 
     public NeurologySpecialist findNeuroHeadById(@PathVariable int id) {
         return service.getNeuroHeadById(id);
     }
 
-    @GetMapping("/displayInternOfNeuroById/{id}")
+    @GetMapping("/display/InternOfNeuroById/{id}")
     @PreAuthorize("hasRole('admin','neurohead','neurointern')")
 
     public NeuroInterns findNeuroInternById(@PathVariable int id) {
         return service.getNeuroInternById(id);
     }
 
-    @GetMapping("/displayHeadOfNephroById/{id}")
+    @GetMapping("/display/HeadOfNephroById/{id}")
     @PreAuthorize("hasRole('admin','nephrohead')")
 
     public NephrologySpecialist findNephroHeadById(@PathVariable int id) {
         return service.getNephroHeadById(id);
     }
 
-    @GetMapping("/displayInternOfNephroById/{id}")
+    @GetMapping("/display/InternOfNephroById/{id}")
     @PreAuthorize("hasRole('admin','nephrohead','nephrointern')")
 
     public NephroInterns findNephroInternById(@PathVariable int id) {
@@ -202,49 +204,49 @@ public class HospitalController {
     }
 
     //GET DETAILS BY NAME
-    @GetMapping("/displayAdminByName/{name}")
+    @GetMapping("/display/AdminByName/{name}")
     @PreAuthorize("hasRole('admin')")
 
     public Admin findAdminByName(@PathVariable String name) {
         return service.getAdminByName(name);
     }
 
-    @GetMapping("/displayHeadOfCardioByName/{name}")
+    @GetMapping("/display/HeadOfCardioByName/{name}")
     @PreAuthorize("hasRole('admin','cardiohead')")
 
     public CardiologySpecialist findCardioHeadByName(@PathVariable String name) {
         return service.getCardioHeadByName(name);
     }
 
-    @GetMapping("/displayInternOfCardioByName/{name}")
+    @GetMapping("/display/InternOfCardioByName/{name}")
     @PreAuthorize("hasRole('ADMIN','cardiohead','cardiointern')")
 
     public CardioInterns findCardioInternByName(@PathVariable String name) {
         return service.getCardioInternByName(name);
     }
 
-    @GetMapping("/displayHeadOfNeuroByName/{name}")
+    @GetMapping("/display/HeadOfNeuroByName/{name}")
     @PreAuthorize("hasRole('ADMIN','neurohead')")
 
     public NeurologySpecialist findNeuroHeadByName(@PathVariable String name) {
         return service.getNeuroHeadByName(name);
     }
 
-    @GetMapping("/displayInternOfNeuroByName/{name}")
+    @GetMapping("/display/InternOfNeuroByName/{name}")
     @PreAuthorize("hasRole('ADMIN','neurohead','neurointern')")
 
     public NeuroInterns findNeuroInternByName(@PathVariable String name) {
         return service.getNeuroInternByName(name);
     }
 
-    @GetMapping("/displayHeadOfNephroByName/{name}")
+    @GetMapping("/display/HeadOfNephroByName/{name}")
     @PreAuthorize("hasRole('ADMIN','nephrohead')")
 
     public NephrologySpecialist findNephroHeadByName(@PathVariable String name) {
         return service.getNephroHeadByName(name);
     }
 
-    @GetMapping("/displayInternIfNephroByName/{name}")
+    @GetMapping("/display/InternIfNephroByName/{name}")
     @PreAuthorize("hasRole('ADMIN','nephrohead','nephrointern')")
 
     public NephroInterns findNephroInternByName(@PathVariable String name) {

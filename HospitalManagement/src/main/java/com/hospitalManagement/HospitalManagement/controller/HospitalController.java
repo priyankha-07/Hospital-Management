@@ -18,99 +18,89 @@ public class HospitalController {
     public  String addDetailsOfDoctor(@RequestBody DoctorsInfo doctorsInfo){
         return service.addDoctorInfo(doctorsInfo);
     }
-    @PostMapping("/admin/addDetailsOfAdmin")
-    @PreAuthorize("hasAuthority('ADMIN")
+    @PostMapping("/add/DetailsOfAdmin")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN")
     public Admin addAdminDetails(@RequestBody Admin admin) {
         return service.saveAdminDetail(admin);
 
     }
 
-    @PostMapping("/admin/addDetailOfCardioHead")
-    //@PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping("/add/DetailOfCardioHead")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public CardiologySpecialist addCardioHeadDetails(@RequestBody CardiologySpecialist cardiologySpecialist) {
         return service.saveCardioHeadDetail(cardiologySpecialist);
     }
 
-    @PostMapping("/addDetailOfCardioIntern")
-    @PreAuthorize("hasAuthority('ADMIN1', 'ADMIN2')")
+    @PostMapping("/add/DetailOfCardioIntern")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN)")
     public CardioInterns addCardioInternDetails(@RequestBody CardioInterns cardioIntern) {
         return service.saveCardioInternDetail(cardioIntern);
     }
 
-    @PostMapping("/addDetailOfNeuroHead")
-    @PreAuthorize("hasRole('admin')")
+    @PostMapping("/add/DetailOfNeuroHead")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN)")
     public NeurologySpecialist addNeuroHeadDetail(@RequestBody NeurologySpecialist neurologySpecialist) {
         return service.saveNeuroHeadDetail(neurologySpecialist);
     }
 
-    @PostMapping("/addDetailOfNeuroIntern")
-    @PreAuthorize("hasRole('admin')")
-
+    @PostMapping("/add/DetailOfNeuroIntern")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN)")
     public NeuroInterns addNeuroInternDetail(@RequestBody NeuroInterns neuroIntern) {
         return service.saveNeuroInternDetail(neuroIntern);
     }
 
-    @PostMapping("/addDetailOfNephroHead")
-    @PreAuthorize("hasRole('admin')")
-
+    @PostMapping("/add/DetailOfNephroHead")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN)")
     public NephrologySpecialist addNephroHeadDetail(@RequestBody NephrologySpecialist nephrologySpecialist) {
         return service.saveNephroHeadDetail(nephrologySpecialist);
     }
 
-    @PostMapping("/addDetailOfNephroIntern")
-    @PreAuthorize("hasRole('admin')")
-
+    @PostMapping("/add/DetailOfNephroIntern")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN)")
     public NephroInterns addNephroInternDetail(@RequestBody NephroInterns nephroIntern) {
         return service.saveNephroInternDetail(nephroIntern);
     }
 
     // ADD DETAILS AS LIST
 
-    @PostMapping("/addListOfAdmins")
-    @PreAuthorize("hasRole('admin')")
-
+    @PostMapping("/add/ListOfAdmins")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN)")
     public List<Admin> addAdminDetails(@RequestBody List<Admin> admins) {
         return service.saveAllAdmins(admins);
     }
 
-    @PostMapping("/addListOfCardioHeads")
-    @PreAuthorize("hasRole('admin')")
-
+    @PostMapping("/add/ListOfCardioHeads")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN)")
     public List<CardiologySpecialist> addCardioHeadsDetails(@RequestBody List<CardiologySpecialist> cardiologySpecialists) {
         return service.saveAllCardioHeads(cardiologySpecialists);
     }
 
-    @PostMapping("/addListOfCardioInterns")
-    @PreAuthorize("hasRole('admin')")
-
+    @PostMapping("/add/ListOfCardioInterns")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN)")
     public List<CardioInterns> addCardioInternsDetails(@RequestBody List<CardioInterns> cardioInterns) {
         return service.saveAllCardioInterns(cardioInterns);
     }
 
-    @PostMapping("/addListOfNeuroHeads")
-    @PreAuthorize("hasRole('admin')")
-
+    @PostMapping("/add/ListOfNeuroHeads")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN)")
     public List<NeurologySpecialist> addNeuroHeadsDetails(@RequestBody List<NeurologySpecialist> neurologySpecialists) {
         return service.saveAllNeuroHeads(neurologySpecialists);
     }
 
-    @PostMapping("/addListOfNeuroInterns")
-    @PreAuthorize("hasRole('admin')")
-
+    @PostMapping("/add/ListOfNeuroInterns")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN)")
     public List<NeuroInterns> addNeuroInternsDetails(@RequestBody List<NeuroInterns> neuroInterns) {
         return service.saveAllNeuroInterns(neuroInterns);
     }
 
-    @PostMapping("/addListOfNephroHeads")
-    @PreAuthorize("hasRole('admin')")
-
+    @PostMapping("/add/ListOfNephroHeads")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN)")
     public List<NephrologySpecialist> addNephroHeadsDetails(@RequestBody List<NephrologySpecialist> nephrologySpecialists) {
         return service.saveAllNephroHeads(nephrologySpecialists);
     }
 
-    @PostMapping("/addListOfNephroInterns")
-    @PreAuthorize("hasRole('admin')")
-
+    @PostMapping("/add/ListOfNephroInterns")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN)")
     public List<NephroInterns> addNephroInternsDetails(@RequestBody List<NephroInterns> nephroInterns) {
         return service.saveAllNephroInterns(nephroInterns);
     }

@@ -251,94 +251,85 @@ public class HospitalController {
         return service.getNephroInternByName(name);
     }
 //update
-    @PutMapping("/updateAdmin")
-    @PreAuthorize("hasRole('ADMIN')")
-
+    @PutMapping("/update/Admin")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public Admin updateAdminDetails(@RequestBody Admin admin) {
         return service. updateAdminDetail(admin);
     }
-    @PutMapping("/updateCardioHead")
-    @PreAuthorize("hasRole('ADMIN')")
-
+    @PutMapping("/update/CardioHead")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public CardiologySpecialist updateCardioHead(@RequestBody CardiologySpecialist cardiologySpecialist){
         return service.updateCardioHeadDetail(cardiologySpecialist);
     }
-    @PutMapping("/updateCardioIntern")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PutMapping("/update/CardioIntern")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 
     public CardioInterns updateCardioIntern(@RequestBody CardioInterns cardioIntern){
         return service.updateCardioInternDetail(cardioIntern);
     }
-    @PutMapping("/updateNeuroHead")
-    @PreAuthorize("hasRole('ADMIN')")
-
+    @PutMapping("/update/NeuroHead")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public NeurologySpecialist updateNeuroHead(@RequestBody NeurologySpecialist neurologySpecialist){
         return service.updateNeuroHeadDetail(neurologySpecialist);
     }
-    @PutMapping("/updateNeuroIntern")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PutMapping("/update/NeuroIntern")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 
     public NeuroInterns updateNeuroIntern(@RequestBody NeuroInterns neuroIntern){
         return service.updateNeuroInternDetail(neuroIntern);
     }
-    @PutMapping("/updateNephroHead")
-    @PreAuthorize("hasRole('ADMIN')")
-
+    @PutMapping("/update/NephroHead")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public NephrologySpecialist updateNephroHead(@RequestBody NephrologySpecialist nephrologySpecialist){
         return service.updateNephroHeadDetail(nephrologySpecialist);
     }
-    @PutMapping("/updateNephroIntern")
-    @PreAuthorize("hasRole('ADMIN')")
-
+    @PutMapping("/update/NephroIntern")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public NephroInterns updateNeuroIntern(@RequestBody NephroInterns nephroIntern){
         return service.updateNephroInternDetail(nephroIntern);
     }
 
     //delete
-    @DeleteMapping("/deleteAdmin/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
-
+    @DeleteMapping("/delete/Admin/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String deleteAdminDetailById(@PathVariable int id){
         service.deleteAdminDetails(id);
         return "Successfully deleted";
     }
-    @DeleteMapping("/deleteCardioHead/{id}")
-    //@PreAuthorize("hasAuthority('ADMIN')")
-
+    @DeleteMapping("/delete/CardioHead/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String deleteCardioHeadDetailById(@PathVariable int id){
         service.deleteCardioHeadDetails(id);
         return "Successfully deleted";
     }
-    @DeleteMapping("/deleteCardioIntern/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/delete/CardioIntern/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 
     public String deleteCardioInternDetailById(@PathVariable int id){
         service.deleteCardioInternDetails(id);
         return "Successfully deleted";
     }
-    @DeleteMapping("/deleteNeuroHead/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
-
+    @DeleteMapping("/delete/NeuroHead/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String deleteNeuroHeadDetailById(@PathVariable int id){
         service.deleteNeuroHeadDetails(id);
         return "Successfully deleted";
     }
-    @DeleteMapping("/deleteNeuroIntern/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/delete/NeuroIntern/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 
     public String deleteNeuroInternDetailById(@PathVariable int id){
         service.deleteNeuroInternDetails(id);
         return "Successfully deleted";
     }
-    @DeleteMapping("/deleteNephroHead/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
-
+    @DeleteMapping("/delete/NephroHead/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String deleteNephroDetailById(@PathVariable int id){
         service.deleteNephroHeadDetails(id);
         return "Successfully deleted";
     }
-    @DeleteMapping("/deleteNephroIntern/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/delete/NephroIntern/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 
     public String deleteNephroInternDetailById(@PathVariable int id){
         service.deleteNephroInternDetails(id);

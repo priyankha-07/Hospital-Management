@@ -14,7 +14,8 @@ public class HospitalController {
 
     @Autowired
     private HospitalService service;
-    @PostMapping("/addDoctorsInfo")
+
+    @PostMapping("/add/DoctorsInfo")
     public  String addDetailsOfDoctor(@RequestBody DoctorsInfo doctorsInfo){
         return service.addDoctorInfo(doctorsInfo);
     }
@@ -105,16 +106,21 @@ public class HospitalController {
         return service.saveAllNephroInterns(nephroInterns);
     }
 
+    @GetMapping("/Welcome")
+    public String welcome() {
+        return "Welcome to Hospital Management System ";
+    }
+    @GetMapping("/display/AllDoctors")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+
+    public List<DoctorsInfo> findAllDoctorsDetails() {
+        return service.getAllDoctorsInfo();
+    }
     @GetMapping("/display/AllAdmins")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 
     public List<Admin> findAllAdminDetails() {
         return service.getAllAdmins();
-    }
-
-    @GetMapping("/Welcome")
-    public String welcome() {
-        return "hello";
     }
 
     @GetMapping("/display/AllHeadsOfCardio")
@@ -255,6 +261,11 @@ public class HospitalController {
         return service.getNephroInternByName(name);
     }
 //update
+@PutMapping("/update/Doctors")
+@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+public DoctorsInfo updateDoctorDetails(@RequestBody DoctorsInfo doctorsInfo) {
+    return service. updateDoctorsDetail(doctorsInfo);
+}
     @PutMapping("/update/Admin")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public Admin updateAdminDetails(@RequestBody Admin admin) {
@@ -294,6 +305,12 @@ public class HospitalController {
     }
 
     //delete
+    @DeleteMapping("/delete/Doctors/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public String deleteDoctorDetailById(@PathVariable int id){
+        service.deleteDoctorDetails(id);
+        return "Successfully deleted";
+    }
     @DeleteMapping("/delete/Admin/{id}")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public String deleteAdminDetailById(@PathVariable int id){

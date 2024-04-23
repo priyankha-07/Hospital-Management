@@ -30,6 +30,9 @@ public class HospitalService {
     private PasswordEncoder passwordEncoder;
 
 //Get details as List
+public List<DoctorsInfo> getAllDoctorsInfo() {
+    return repository.findAll();
+}
     public List<Admin> getAllAdmins() {
         return adminRepository.findAll();
     }
@@ -210,8 +213,18 @@ public class HospitalService {
         nephrohead.setRoles(nephroHeads.getRoles());
         return nephrologySpecialistRepository.save(nephrohead);
     }
+    public DoctorsInfo updateDoctorsDetail (DoctorsInfo doctorsInfo){
+        DoctorsInfo doctors =repository.findById(doctorsInfo.getId()).orElse(null);
+        doctors.setName(doctorsInfo.getName());
+        doctors.setEmail(doctorsInfo.getEmail());
+        doctors.setRoles(doctorsInfo.getRoles());
+        return repository.save(doctors);
+    }
     // delete
-
+    public String deleteDoctorDetails(int id){
+        repository.deleteById(id);
+        return "deleted successfully"+id;
+    }
     public String deleteAdminDetails(int id){
         adminRepository.deleteById(id);
         return "deleted successfully"+id;
